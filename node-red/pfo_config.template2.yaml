@@ -1,0 +1,47 @@
+prod:
+  tg_activation_fun: https://europe-west1-sunlit-wall-276019.cloudfunctions.net/dev_QlwlJ5uBz0
+  tg_activation_fun_timeout: 30
+  port: 80
+  tg_notify_fun: https://europe-west1-sunlit-wall-276019.cloudfunctions.net/dev_y12t2p0oD9
+  smart_passage:
+    current:
+      model: ${PFO_PATH}/smartpass/current/model.pkl
+      report: ${PFO_PATH}/smartpass/current/report.json
+    new:
+      model: ${PFO_PATH}/smartpass/new/model.pkl
+      report: ${PFO_PATH}/smartpass/report.json
+    get_label_fun: http://192.168.0.110:5000/tg_get_dir_labels
+    get_label_fun_local: http://192.168.0.110:5000/sp_get_dir_labels
+  motion:
+    gif: /tmp/pfo/motion.gif
+    single_img: /tmp/motion/
+    event_end: /var/lib/motion/event_end
+    stream_port: 8081
+    get_label_fun: https://europe-west1-sunlit-wall-276019.cloudfunctions.net/dev_x7sSVTTPwN
+    get_label_fun_local: http://192.168.0.110:5000/mo_get_motion_labels
+  wifi:
+    start_ap:  ${PFO_PATH}/wifi/start_ap.sh # warning! removes the wifi setup and reboots!
+    stop_ap:  ${PFO_PATH}/wifi/stop_ap.sh
+
+dev:
+  tg_activation_fun: https://europe-west1-sunlit-wall-276019.cloudfunctions.net/dev_QlwlJ5uBz0
+  tg_activation_fun_timeout: 30
+  port: 80
+  tg_notify_fun: https://europe-west1-sunlit-wall-276019.cloudfunctions.net/dev_y12t2p0oD9
+  tg_notify_fun_local: http://192.168.0.110:5000/tg_notify
+  smart_passage:
+    current:
+      model: /home/pi/patpred/current/model.pkl
+      report: /home/pi/patpred/current/report.json
+    new:
+      model: /home/pi/patpred/new/model.pkl
+      report: /home/pi/patpred/new/report.json
+    get_label_fun: http://192.168.0.110:5000/tg_get_dir_labels
+    get_label_fun_local: http://192.168.0.110:5000/sp_get_dir_labels
+  motion:
+    gif: /tmp/pfo/motion.gif
+    single_img: /tmp/motion/
+    event_end: /var/lib/motion/event_end
+    stream_port: 8081
+    get_label_fun: https://europe-west1-sunlit-wall-276019.cloudfunctions.net/dev_x7sSVTTPwN
+    get_label_fun_local: http://192.168.0.110:5000/mo_get_motion_labels
