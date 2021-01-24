@@ -40,20 +40,13 @@ sudo apt-get install mosquitto-clients -y
 sudo apt-get install jq -y
 
 
-# # Install node-red
-bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered) --confirm-install --confirm-pi
-sudo systemctl enable nodered.service
+
 
 
 # Clone the repository
 git clone https://github.com/ahue/petflap-open-setup.git setup
 
-git clone https://github.com/ahue/petflap-open-engine-node-red.git ~/.node-red/projects/petflap-open-engine
-
 git clone https://github.com/ahue/rpi-zw-wifi-ap-switch.git wifi
-
-git clone https://github.com/ahue/petflap-open-smartpass-ml.git smartpass/algo
-
 
 # Configure postgres
 cd ${PFO_PATH}/setup/postgres
@@ -63,16 +56,29 @@ sudo su postgres -c "psql -f create_petflap.sql -d petflap"
 # ggf. timezone setzen
 
 # Configure motion
-sudo cp ${PFO_PATH}/motion/motion.conf /etc/motion/motion.conf
-sudo cp ${PFO_PATH}/motion/motion /etc/default/motion
+# Note: too early startup of motion, when postgres is not yet started can lead to crash!
+
+# enable camera
+sudo raspi-config nonint do_camera 1
+
+mkdir -p ${PFO_PATH}/motion/thumbnails
+sudo cp ${PFO_PATH}/setup/motion/motion.conf /etc/motion/motion.conf
+sudo cp ${PFO_PATH}/setup/motion/motion /etc/default/motion
 sudo systemctl enable motion
-
-
+sudo service restart motion
 
 # Make folders
-mkdir -p ${PFO_PATH}/motion/thumbnails
 mkdir -p ${PFO_PATH}/smartpass/model/current
 mkdir -p ${PFO_PATH}/smartpass/model/new
+
+# Install smartpass package
+git clone https://github.com/ahue/petflap-open-smartpass-ml.git smartpass/algo
+cd ${PFO_PATH}/smartpass/algo
+pip3 install -e .
+
+# Create directory for logs
+sudo mkdir -p /var/log/pfo
+sudo chown pi:pi /var/log/pfo
 
 # Put the configuration in place
 cd ${PFO_PATH}/config/node-red
@@ -88,6 +94,10 @@ sudo setcap 'cap_net_bind_service=+ep'  $(eval readlink -f `which node`)
 
 # maybe issue here: bootstrap@4.5.0 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer dependencies yourself.
 
+# Install node-red
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered) --confirm-install --confirm-pi
+# Clone the project
+git clone https://github.com/ahue/petflap-open-engine-node-red.git ~/.node-red/projects/petflap-open-engine
 
 # TODO: set timezone
 cd ~/.node-red/
@@ -106,6 +116,7 @@ NR_ADMIN_PW=${NR_ADMIN_PW} envsubst < settings.js > ~/.node-red/settings.js
 # maybe need to manipulate /lib/systemd/system/nodered.service to start the correct project!
 
 # Does not work, since config is not there yet
+sudo systemctl enable nodered.service
 sudo systemctl start nodered.service # needed to create .config?
 
 while [ ! -f ~/.node-red/.config.json ]; do sleep 1; done
@@ -115,16 +126,6 @@ jq -e '.projects = { "projects": { "petflap-open-engine": { "credentialSecret": 
 
 sudo systemctl restart nodered.service
 
-# Create directory for logs
-sudo mkdir -p /var/log/pfo
-sudo chown pi:pi /var/log/pfo
-
-# Install smartpass package
-cd ${PFO_PATH}/smartpass/algo
-pip3 install -e .
-
-
-
 
 #Finally set up AP
-# sudo reboot
+#sudo reboot
