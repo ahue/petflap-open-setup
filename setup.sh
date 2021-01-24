@@ -50,9 +50,9 @@ git clone https://github.com/ahue/rpi-zw-wifi-ap-switch.git wifi
 
 # Configure postgres
 cd ${PFO_PATH}/setup/postgres
-sudo su postgres -c "psql -f pg_setup.sql"
-sudo su postgres -c "psql -f drop_tables.sql -d petflap"
-sudo su postgres -c "psql -f create_petflap.sql -d petflap"
+sudo su postgres -c "psql -f 01_pg_setup.sql"
+sudo su postgres -c "psql -f 02_drop_tables.sql -d petflap"
+sudo su postgres -c "psql -f 03_create_petflap.sql -d petflap"
 # ggf. timezone setzen
 
 # Configure motion
