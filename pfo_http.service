@@ -1,0 +1,14 @@
+[Unit]
+Description=PFO HTTP Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+ExecStart=/usr/bin/python3 -m pfo_passage_monitor.flask.app
+
+[Install]
+WantedBy=multi-user.target

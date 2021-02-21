@@ -1,0 +1,86 @@
+# log configuration for pfo_passage_monitor
+logging:
+  enabled: true
+  format: "%(asctime)s.%(msecs)03d [%(levelname)s] [%(module)s:%(lineno)d]: %(message)s"
+  level: "INFO"
+
+petflap:
+  checks_per_sec: 100
+  collect_time: 10 # seconds; time before cooldown starts
+  logging:
+    waiting_state: 60 # seconds
+  pins:
+    in: 27
+    out: 23 # GPIO04 - use BCM naming scheme
+
+pets:
+  - List
+  - your
+  - pet
+  - names
+  - here
+
+direction:
+  strategy: nnet
+  nnet: 
+    model_path: ~/pfo/models 
+    report_path: ~/pfo/reports # modify
+
+postgres:
+  host: localhost
+  port: 5432
+  database: petflap
+  user: petflap
+  password: petflap
+
+mqtt:
+  host: xxx.xxx.xxx.xxx # Modify here
+  port: 1883
+  user: username # Modify here
+  password: password # Modify here
+
+telegram:
+  token: # your telegram bot token https://core.telegram.org/bots#3-how-do-i-create-a-bot 
+  chats:
+    - your
+    - chat ids
+    - here # https://stackoverflow.com/a/32572159/287367
+  allowed_users:
+    - your 
+    - allowed usernames 
+    - here
+
+observer:
+  mqtt:
+    topic: pfo/petflap/passage
+    qos: 0
+    retain: false
+  telegram:
+    image:
+      width: 600
+      height: 80
+      directory: /tmp/pfo/telegram/
+    message:
+      text_in: "{pet_name} ist rein."
+      text_out: "{pet_name} ist raus."
+      show_time: true
+    timezone: CET
+
+motion:
+  event:
+    start: /var/lib/motion/event_start
+    end: /var/lib/motion/event_end
+    gif_created: /var/lib/motion/gif_created
+  gif_dir: /var/lib/motion/gif/
+  observer:
+    mqtt:
+      topic_gif: pfo/motion/gif
+      topic_meta: pfo/motion/meta
+      qos: 0
+      retain: false
+    telegram: {}
+
+http:
+  api_keys:
+    - your-api-key: default # keys you whish to use for authentication at the api
+    - your-second-key: default
