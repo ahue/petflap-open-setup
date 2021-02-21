@@ -1,0 +1,14 @@
+[Unit]
+Description=PFO Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+ExecStart=/usr/bin/python3 -m pfo_passage_monitor -c /home/pi/pfo/config.yaml
+
+[Install]
+WantedBy=multi-user.target
