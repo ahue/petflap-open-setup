@@ -44,7 +44,7 @@ SET row_security = off;
 
 --
 -- TOC entry 204 (class 1259 OID 24718)
--- Name: motion_id_seq; Type: SEQUENCE; Schema: public; Owner: pi
+-- Name: motion_id_seq; Type: SEQUENCE; Schema: public; Owner: petflap
 --
 
 CREATE SEQUENCE public.motion_id_seq
@@ -55,13 +55,13 @@ CREATE SEQUENCE public.motion_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.motion_id_seq OWNER TO pi;
+ALTER TABLE public.motion_id_seq OWNER TO petflap;
 
 SET default_tablespace = '';
 
 --
 -- TOC entry 205 (class 1259 OID 24730)
--- Name: motion; Type: TABLE; Schema: public; Owner: pi
+-- Name: motion; Type: TABLE; Schema: public; Owner: petflap
 --
 
 CREATE TABLE public.motion (
@@ -73,12 +73,12 @@ CREATE TABLE public.motion (
 );
 
 
-ALTER TABLE public.motion OWNER TO pi;
+ALTER TABLE public.motion OWNER TO petflap;
 
 --
 -- TOC entry 2952 (class 0 OID 0)
 -- Dependencies: 205
--- Name: COLUMN motion.timestamp_utc; Type: COMMENT; Schema: public; Owner: pi
+-- Name: COLUMN motion.timestamp_utc; Type: COMMENT; Schema: public; Owner: petflap
 --
 
 COMMENT ON COLUMN public.motion.timestamp_utc IS 'milliseconds';
@@ -86,7 +86,7 @@ COMMENT ON COLUMN public.motion.timestamp_utc IS 'milliseconds';
 
 --
 -- TOC entry 203 (class 1259 OID 16485)
--- Name: motion_log; Type: TABLE; Schema: public; Owner: pi
+-- Name: motion_log; Type: TABLE; Schema: public; Owner: petflap
 --
 
 CREATE TABLE public.motion_log (
@@ -105,11 +105,11 @@ CREATE TABLE public.motion_log (
 );
 
 
-ALTER TABLE public.motion_log OWNER TO pi;
+ALTER TABLE public.motion_log OWNER TO petflap;
 
 --
 -- TOC entry 206 (class 1259 OID 24745)
--- Name: motion_start_end; Type: VIEW; Schema: public; Owner: pi
+-- Name: motion_start_end; Type: VIEW; Schema: public; Owner: petflap
 --
 
 CREATE VIEW public.motion_start_end AS
@@ -131,11 +131,11 @@ CREATE VIEW public.motion_start_end AS
   ORDER BY se.event_id DESC;
 
 
-ALTER TABLE public.motion_start_end OWNER TO pi;
+ALTER TABLE public.motion_start_end OWNER TO petflap;
 
 --
 -- TOC entry 198 (class 1259 OID 16410)
--- Name: passage; Type: TABLE; Schema: public; Owner: pi
+-- Name: passage; Type: TABLE; Schema: public; Owner: petflap
 --
 
 CREATE TABLE public.passage (
@@ -146,11 +146,11 @@ CREATE TABLE public.passage (
 );
 
 
-ALTER TABLE public.passage OWNER TO pi;
+ALTER TABLE public.passage OWNER TO petflap;
 
 --
 -- TOC entry 199 (class 1259 OID 16419)
--- Name: passage_id_seq; Type: SEQUENCE; Schema: public; Owner: pi
+-- Name: passage_id_seq; Type: SEQUENCE; Schema: public; Owner: petflap
 --
 
 CREATE SEQUENCE public.passage_id_seq
@@ -162,12 +162,12 @@ CREATE SEQUENCE public.passage_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.passage_id_seq OWNER TO pi;
+ALTER TABLE public.passage_id_seq OWNER TO petflap;
 
 --
 -- TOC entry 2957 (class 0 OID 0)
 -- Dependencies: 199
--- Name: passage_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: pi
+-- Name: passage_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: petflap
 --
 
 ALTER SEQUENCE public.passage_id_seq OWNED BY public.passage.id;
@@ -175,7 +175,7 @@ ALTER SEQUENCE public.passage_id_seq OWNED BY public.passage.id;
 
 --
 -- TOC entry 197 (class 1259 OID 16399)
--- Name: pet; Type: TABLE; Schema: public; Owner: pi
+-- Name: pet; Type: TABLE; Schema: public; Owner: petflap
 --
 
 CREATE TABLE public.pet (
@@ -184,11 +184,11 @@ CREATE TABLE public.pet (
 );
 
 
-ALTER TABLE public.pet OWNER TO pi;
+ALTER TABLE public.pet OWNER TO petflap;
 
 --
 -- TOC entry 200 (class 1259 OID 16430)
--- Name: pet_id_seq; Type: SEQUENCE; Schema: public; Owner: pi
+-- Name: pet_id_seq; Type: SEQUENCE; Schema: public; Owner: petflap
 --
 
 CREATE SEQUENCE public.pet_id_seq
@@ -200,12 +200,12 @@ CREATE SEQUENCE public.pet_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.pet_id_seq OWNER TO pi;
+ALTER TABLE public.pet_id_seq OWNER TO petflap;
 
 --
 -- TOC entry 2960 (class 0 OID 0)
 -- Dependencies: 200
--- Name: pet_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: pi
+-- Name: pet_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: petflap
 --
 
 ALTER SEQUENCE public.pet_id_seq OWNED BY public.pet.id;
@@ -213,7 +213,7 @@ ALTER SEQUENCE public.pet_id_seq OWNED BY public.pet.id;
 
 --
 -- TOC entry 202 (class 1259 OID 16464)
--- Name: security; Type: TABLE; Schema: public; Owner: pi
+-- Name: security; Type: TABLE; Schema: public; Owner: petflap
 --
 
 CREATE TABLE public.security (
@@ -226,11 +226,11 @@ CREATE TABLE public.security (
 );
 
 
-ALTER TABLE public.security OWNER TO pi;
+ALTER TABLE public.security OWNER TO petflap;
 
 --
 -- TOC entry 196 (class 1259 OID 16388)
--- Name: user; Type: TABLE; Schema: public; Owner: pi
+-- Name: user; Type: TABLE; Schema: public; Owner: petflap
 --
 
 CREATE TABLE public."user" (
@@ -239,11 +239,11 @@ CREATE TABLE public."user" (
 );
 
 
-ALTER TABLE public."user" OWNER TO pi;
+ALTER TABLE public."user" OWNER TO petflap;
 
 --
 -- TOC entry 201 (class 1259 OID 16441)
--- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: pi
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: petflap
 --
 
 CREATE SEQUENCE public.user_id_seq
@@ -255,12 +255,12 @@ CREATE SEQUENCE public.user_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.user_id_seq OWNER TO pi;
+ALTER TABLE public.user_id_seq OWNER TO petflap;
 
 --
 -- TOC entry 2964 (class 0 OID 0)
 -- Dependencies: 201
--- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: pi
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: petflap
 --
 
 ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
@@ -268,7 +268,7 @@ ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
 
 --
 -- TOC entry 2811 (class 2604 OID 16421)
--- Name: passage id; Type: DEFAULT; Schema: public; Owner: pi
+-- Name: passage id; Type: DEFAULT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public.passage ALTER COLUMN id SET DEFAULT nextval('public.passage_id_seq'::regclass);
@@ -276,7 +276,7 @@ ALTER TABLE ONLY public.passage ALTER COLUMN id SET DEFAULT nextval('public.pass
 
 --
 -- TOC entry 2810 (class 2604 OID 16432)
--- Name: pet id; Type: DEFAULT; Schema: public; Owner: pi
+-- Name: pet id; Type: DEFAULT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public.pet ALTER COLUMN id SET DEFAULT nextval('public.pet_id_seq'::regclass);
@@ -284,7 +284,7 @@ ALTER TABLE ONLY public.pet ALTER COLUMN id SET DEFAULT nextval('public.pet_id_s
 
 --
 -- TOC entry 2809 (class 2604 OID 16443)
--- Name: user id; Type: DEFAULT; Schema: public; Owner: pi
+-- Name: user id; Type: DEFAULT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regclass);
@@ -292,7 +292,7 @@ ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_
 
 --
 -- TOC entry 2821 (class 2606 OID 24739)
--- Name: motion motion_pkey; Type: CONSTRAINT; Schema: public; Owner: pi
+-- Name: motion motion_pkey; Type: CONSTRAINT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public.motion
@@ -301,7 +301,7 @@ ALTER TABLE ONLY public.motion
 
 --
 -- TOC entry 2819 (class 2606 OID 16429)
--- Name: passage passage_pkey; Type: CONSTRAINT; Schema: public; Owner: pi
+-- Name: passage passage_pkey; Type: CONSTRAINT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public.passage
@@ -310,7 +310,7 @@ ALTER TABLE ONLY public.passage
 
 --
 -- TOC entry 2817 (class 2606 OID 16440)
--- Name: pet pet_pkey; Type: CONSTRAINT; Schema: public; Owner: pi
+-- Name: pet pet_pkey; Type: CONSTRAINT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public.pet
@@ -319,7 +319,7 @@ ALTER TABLE ONLY public.pet
 
 --
 -- TOC entry 2815 (class 2606 OID 16451)
--- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: pi
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public."user"
@@ -328,7 +328,7 @@ ALTER TABLE ONLY public."user"
 
 --
 -- TOC entry 2822 (class 2606 OID 16452)
--- Name: passage pet; Type: FK CONSTRAINT; Schema: public; Owner: pi
+-- Name: passage pet; Type: FK CONSTRAINT; Schema: public; Owner: petflap
 --
 
 ALTER TABLE ONLY public.passage
@@ -338,7 +338,7 @@ ALTER TABLE ONLY public.passage
 --
 -- TOC entry 2951 (class 0 OID 0)
 -- Dependencies: 204
--- Name: SEQUENCE motion_id_seq; Type: ACL; Schema: public; Owner: pi
+-- Name: SEQUENCE motion_id_seq; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON SEQUENCE public.motion_id_seq TO petflap;
@@ -347,7 +347,7 @@ GRANT ALL ON SEQUENCE public.motion_id_seq TO petflap;
 --
 -- TOC entry 2953 (class 0 OID 0)
 -- Dependencies: 205
--- Name: TABLE motion; Type: ACL; Schema: public; Owner: pi
+-- Name: TABLE motion; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON TABLE public.motion TO petflap;
@@ -356,7 +356,7 @@ GRANT ALL ON TABLE public.motion TO petflap;
 --
 -- TOC entry 2954 (class 0 OID 0)
 -- Dependencies: 203
--- Name: TABLE motion_log; Type: ACL; Schema: public; Owner: pi
+-- Name: TABLE motion_log; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON TABLE public.motion_log TO petflap;
@@ -365,7 +365,7 @@ GRANT ALL ON TABLE public.motion_log TO petflap;
 --
 -- TOC entry 2955 (class 0 OID 0)
 -- Dependencies: 206
--- Name: TABLE motion_start_end; Type: ACL; Schema: public; Owner: pi
+-- Name: TABLE motion_start_end; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT SELECT ON TABLE public.motion_start_end TO petflap;
@@ -374,7 +374,7 @@ GRANT SELECT ON TABLE public.motion_start_end TO petflap;
 --
 -- TOC entry 2956 (class 0 OID 0)
 -- Dependencies: 198
--- Name: TABLE passage; Type: ACL; Schema: public; Owner: pi
+-- Name: TABLE passage; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON TABLE public.passage TO petflap;
@@ -383,7 +383,7 @@ GRANT ALL ON TABLE public.passage TO petflap;
 --
 -- TOC entry 2958 (class 0 OID 0)
 -- Dependencies: 199
--- Name: SEQUENCE passage_id_seq; Type: ACL; Schema: public; Owner: pi
+-- Name: SEQUENCE passage_id_seq; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON SEQUENCE public.passage_id_seq TO petflap;
@@ -392,7 +392,7 @@ GRANT ALL ON SEQUENCE public.passage_id_seq TO petflap;
 --
 -- TOC entry 2959 (class 0 OID 0)
 -- Dependencies: 197
--- Name: TABLE pet; Type: ACL; Schema: public; Owner: pi
+-- Name: TABLE pet; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON TABLE public.pet TO petflap;
@@ -401,7 +401,7 @@ GRANT ALL ON TABLE public.pet TO petflap;
 --
 -- TOC entry 2961 (class 0 OID 0)
 -- Dependencies: 200
--- Name: SEQUENCE pet_id_seq; Type: ACL; Schema: public; Owner: pi
+-- Name: SEQUENCE pet_id_seq; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON SEQUENCE public.pet_id_seq TO petflap;
@@ -410,7 +410,7 @@ GRANT ALL ON SEQUENCE public.pet_id_seq TO petflap;
 --
 -- TOC entry 2962 (class 0 OID 0)
 -- Dependencies: 202
--- Name: TABLE security; Type: ACL; Schema: public; Owner: pi
+-- Name: TABLE security; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON TABLE public.security TO petflap;
@@ -419,7 +419,7 @@ GRANT ALL ON TABLE public.security TO petflap;
 --
 -- TOC entry 2963 (class 0 OID 0)
 -- Dependencies: 196
--- Name: TABLE "user"; Type: ACL; Schema: public; Owner: pi
+-- Name: TABLE "user"; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON TABLE public."user" TO petflap;
@@ -428,7 +428,7 @@ GRANT ALL ON TABLE public."user" TO petflap;
 --
 -- TOC entry 2965 (class 0 OID 0)
 -- Dependencies: 201
--- Name: SEQUENCE user_id_seq; Type: ACL; Schema: public; Owner: pi
+-- Name: SEQUENCE user_id_seq; Type: ACL; Schema: public; Owner: petflap
 --
 
 GRANT ALL ON SEQUENCE public.user_id_seq TO petflap;
