@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Note: set the time zone with sudo dpkg-reconfigure tzdata
+
 # Works with 2020-05-27-raspios-buster-lite-armhf
 # raspberry pi zero w/wh
 
@@ -20,7 +22,7 @@ sudo apt-get install postgresql libpq-dev postgresql-client postgresql-client-co
 # # Install mqtt publisher/subscriber
 #sudo apt-get install mosquitto-clients -y # do i still need this!
 
-PFO_PATH="~/pfo"
+PFO_PATH="$HOME/pfo"
 
 mkdir ${PFO_PATH}
 cd ${PFO_PATH}
